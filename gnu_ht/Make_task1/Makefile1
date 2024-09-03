@@ -1,0 +1,27 @@
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall
+
+# Source files and object files
+SRC1 = main.c
+SRC2 = src1.c
+OBJ1 = main.o
+OBJ2 = src1.o
+TARGET = program
+
+# Rule to build the target executable
+all: $(TARGET)
+
+$(TARGET): $(OBJ1) $(OBJ2)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ1) $(OBJ2)
+
+$(OBJ1): $(SRC1)
+	$(CC) $(CFLAGS) -c $(SRC1)
+
+$(OBJ2): $(SRC2)
+	$(CC) $(CFLAGS) -c $(SRC2)
+
+# Clean up
+clean:
+	rm -f $(TARGET) $(OBJ1) $(OBJ2)
+
